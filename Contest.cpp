@@ -1,37 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
-{
+int main() {
     int t;
-    cin>>t;    
+    cin >> t;
 
-    while(t--)
-    {
-        int n,k;
-        cin>>n>>k;
-        int c[k],b[k];
-        
-        for(int i=0; i<k; i++)
-        {
-            cin>>b[i]>>c[i];
+    while (t--) {
+        long long x;
+        cin >> x;
+
+        long long y = -1; // Default value if no valid y is found
+
+        for (long long i = x; i > 0; i--) { // Check all possible y values
+            if ((x ^ i) > x) {
+                y = i;
+                break; // We just need any one valid y
+            }
         }
 
-        sort(c,c+k, greater<int>());
-        int length,sum=0;
-        if(n>k)
-        {
-            length=k;
-        }
-        else
-        {
-            length=n;
-        }
-        for(int i=0; i<length; i++)
-        {
-            sum=sum+c[i];
-        }
-        cout<<sum<<endl;
-    }    
+        cout << y << endl;
+    }
+
     return 0;
 }
